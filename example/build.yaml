@@ -1,0 +1,9 @@
+# Read about `build.yaml` at https://pub.dev/packages/build_config
+targets:
+  $default:
+    builders:
+      # Configure the builder `pkg_name|builder_name`
+      localization_builder|app_localizations_builder:
+        # Only run this builder on the specified input.
+        generate_for:
+          - lib/src/i10n/app_localizations.dart

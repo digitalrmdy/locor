@@ -1,0 +1,15 @@
+appTitle: Sample
+welcome: 'Welcome, $firstName'
+login:
+  button:
+    login: Login
+    #use camelCase
+    continueWithoutRegister: 'Continue without registering'
+register:
+  button: Register
+  error:
+    dialog:
+      title: 'Register Error!'
+      msg: |
+        An error occured during the register call.
+        Please try again.
