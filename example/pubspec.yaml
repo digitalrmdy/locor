@@ -9,7 +9,10 @@ environment:
 
 dependencies:
   localization_annotation:
-    path: ../localization_annotation
+    git:
+      ref: develop
+      url: https://github.com/digitalrmdy/localization-builder.git
+      path: localization_annotation
   flutter:
     sdk: flutter
 
@@ -18,10 +21,19 @@ dev_dependencies:
   intl_translation: ^0.17.7
   intl: ^0.16.0
   localization_builder:
-    path: ../localization_builder
+    git:
+      ref: develop
+      url: https://github.com/digitalrmdy/localization-builder.git
+      path: localization_builder
   build_runner: ^1.7.1
   flutter_test:
     sdk: flutter
+
+dependency_overrides:
+  localization_builder:
+    path: ../localization_builder
+  localization_annotation:
+    path: ../localization_annotation
 
 
 # For information on the generic Dart part of this file, see the
@@ -60,3 +72,5 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
+
+

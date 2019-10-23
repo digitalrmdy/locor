@@ -9,7 +9,10 @@ environment:
 
 dependencies:
   localization_annotation:
-    path: ../localization_annotation
+    git:
+      ref: develop
+      url: https://github.com/digitalrmdy/localization-builder.git
+      path: localization_annotation
   source_gen: 0.9.4+5
   build: ^1.2.0
   yaml: ^2.2.0
@@ -24,6 +27,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+dependency_overrides:
+  localization_annotation:
+    path: ../localization_annotation
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
