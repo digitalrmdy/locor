@@ -10,7 +10,6 @@ environment:
 dependencies:
   localization_annotation:
     git:
-      ref: develop
       url: https://github.com/digitalrmdy/localization-builder.git
       path: localization_annotation
   source_gen: 0.9.4+5

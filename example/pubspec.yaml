@@ -10,7 +10,6 @@ environment:
 dependencies:
   localization_annotation:
     git:
-      ref: develop
       url: https://github.com/digitalrmdy/localization-builder.git
       path: localization_annotation
   flutter:
@@ -22,7 +21,6 @@ dev_dependencies:
   intl: ^0.16.0
   localization_builder:
     git:
-      ref: develop
       url: https://github.com/digitalrmdy/localization-builder.git
       path: localization_builder
   build_runner: ^1.7.1
