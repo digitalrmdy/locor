@@ -3,10 +3,8 @@ import 'package:build/build.dart';
 import 'package:glob/glob.dart';
 import 'package:localization_annotation/localization_annotation.dart';
 
-
 import 'package:source_gen/source_gen.dart';
 import 'package:yaml/yaml.dart';
-
 
 import '../dartbuilders/app_localizations_dart_builder.dart';
 import '../exceptions/exceptions.dart';
@@ -32,16 +30,25 @@ class AppLocalizationsGenerator
     }
   }
 
+  ConstantReader readParam(ConstantReader annotation, String parameter) {
+    final reader = annotation.read(parameter);
+    if (reader.isNull) {
+      throw AppLocalizationsGeneratorException('$parameter is requried');
+    }
+    return reader;
+  }
+
   @override
   dynamic generateForAnnotatedElement(
       Element element, ConstantReader annotation, BuildStep buildStep) async {
-    final yamlStringsPath = annotation.read('yamlStringsPath').stringValue;
-    final List<String> supportedLocals = annotation
-        .read('supportedLocals')
-        .listValue
-        .map((x) => x.toStringValue())
-        .toList();
-    final String name = annotation.read('name').stringValue;
+    final yamlStringsPath =
+        readParam(annotation, 'yamlStringsPath').stringValue;
+    final List<String> supportedLocals =
+        readParam(annotation, 'supportedLocals')
+            .listValue
+            .map((x) => x.toStringValue())
+            .toList();
+    final String name = readParam(annotation, 'name').stringValue;
     final yamlMap = await _toYamlMap(yamlStringsPath, buildStep);
     if (yamlMap is YamlMap) {
       final strings = StringsBuilder().buildFromYaml(yamlMap);

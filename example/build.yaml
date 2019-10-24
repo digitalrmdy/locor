@@ -6,4 +6,4 @@ targets:
       localization_builder|app_localizations_builder:
         # Only run this builder on the specified input.
         generate_for:
-          - lib/src/i10n/app_localizations.dart
+          - lib/src/l10n/app_localizations.dart

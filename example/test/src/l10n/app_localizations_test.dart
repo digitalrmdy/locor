@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../lib/src/i10n/app_localizations.dart';
+import '../../../lib/src/l10n/app_localizations.dart';
 
 void main() {
   test("test if translation for 'nl' locale is correct", () async {
