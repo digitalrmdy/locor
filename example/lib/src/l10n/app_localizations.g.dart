@@ -31,11 +31,11 @@ class AppLocalizations {
       Intl.message('Continue without registering',
           name: 'loginButtonContinueWithoutRegister');
   String get registerButton => Intl.message('Register', name: 'registerButton');
-  String get registerErrorDialogTitle =>
-      Intl.message('Register Error!', name: 'registerErrorDialogTitle');
   String get registerErrorDialogMsg => Intl.message(
       'An error occured during the register call.\nPlease try again.',
       name: 'registerErrorDialogMsg');
+  String get registerErrorDialogTitle =>
+      Intl.message('Register Error!', name: 'registerErrorDialogTitle');
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -136,8 +136,9 @@ class _StringsBuilder {
   String createIntlCodeBody(StringValue stringValue) {
     final name = stringValue.camelCaseFieldName;
     final args = stringValue.args;
-    //escape single quotes
-    var msg = replaceNewLinesWith(stringValue.value, '\\n');
+    //escape newlines and remove trailing new lines
+    var msg =
+        replaceNewLinesWith(removeNewLinesRight(stringValue.value), '\\n');
     String body = "Intl.message('$msg', name: '$name'";
     if (args.isNotEmpty) {
       final argsString = args.map((a) => a.key).join(", ");

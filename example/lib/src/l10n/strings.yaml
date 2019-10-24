@@ -9,7 +9,7 @@ register:
   button: Register
   error:
     dialog:
-      title: 'Register Error!'
       msg: |
         An error occured during the register call.
         Please try again.
+      title: 'Register Error!'
