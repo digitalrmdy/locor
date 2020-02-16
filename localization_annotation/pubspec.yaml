@@ -1,8 +1,7 @@
 name: localization_annotation
 description: annotations for the localization builder
-version: 0.0.1
+version: 0.0.2
 author:
-homepage:
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

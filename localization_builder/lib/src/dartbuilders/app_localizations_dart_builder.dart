@@ -1,15 +1,16 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
+import 'package:localization_annotation/localization_annotation.dart';
 import 'package:localization_builder/src/util/string_utils.dart';
 
 import '../models/models.dart';
 import '../util/generator_utils.dart';
 
 class AppLocalizationsDartBuilder {
-  String buildDartFile(
-      String name, Strings strings, List<String> supportedLocals) {
+  String buildDartFile(String name, Strings strings,
+      List<String> supportedLocals, SeparatorStyle separatorStyle) {
     final lib = Library((b) => b.body.addAll([
-          _AppLocalizationsBuilder(name).build(strings),
+          _AppLocalizationsBuilder(name).build(strings, separatorStyle),
           _AppLocalizationsDelegateBuilder(name).build(supportedLocals)
         ]));
     final emitter = DartEmitter();
@@ -73,12 +74,12 @@ class _AppLocalizationsBuilder {
 
   _AppLocalizationsBuilder(this.name);
 
-  Class build(StringsContainer strings) {
+  Class build(StringsContainer strings, SeparatorStyle separatorStyle) {
     return Class((b) => b
       ..name = name
       ..methods.add(_createLoadMethod())
       ..methods.add(__createOfMethod())
-      ..methods.addAll(_StringsBuilder().build(strings)));
+      ..methods.addAll(_StringsBuilder(separatorStyle).build(strings)));
   }
 
   Method _createLoadMethod() {
@@ -113,6 +114,10 @@ class _AppLocalizationsBuilder {
 }
 
 class _StringsBuilder {
+  final SeparatorStyle separatorStyle;
+
+  const _StringsBuilder(this.separatorStyle) : assert(separatorStyle != null);
+
   List<Method> build(StringsContainer parent) {
     return _createMethods(parent.children);
   }
@@ -134,7 +139,7 @@ class _StringsBuilder {
   }
 
   String createIntlCodeBody(StringValue stringValue) {
-    final name = stringValue.camelCaseFieldName;
+    final name = stringValue.generateMethodName(separatorStyle);
     final args = stringValue.args;
     //escape newlines and remove trailing new lines
     var msg =
@@ -151,7 +156,7 @@ class _StringsBuilder {
   Method _createMethod(StringValue child) {
     return Method((b) {
       b
-        ..name = child.camelCaseFieldName
+        ..name = child.generateMethodName(separatorStyle)
         ..returns = refer("String")
         ..lambda = true
         ..type = child.args.isNotEmpty ? null : MethodType.getter

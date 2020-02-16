@@ -48,12 +48,14 @@ class AppLocalizationsGenerator
             .listValue
             .map((x) => x.toStringValue())
             .toList();
+    final SeparatorStyle separatorStyle =
+        readParam(annotation, 'separatorStyle').literalValue;
     final String name = readParam(annotation, 'name').stringValue;
     final yamlMap = await _toYamlMap(yamlStringsPath, buildStep);
     if (yamlMap is YamlMap) {
       final strings = StringsBuilder().buildFromYaml(yamlMap);
       return AppLocalizationsDartBuilder()
-          .buildDartFile(name, strings, supportedLocals);
+          .buildDartFile(name, strings, supportedLocals, separatorStyle);
     } else {
       throw AppLocalizationsGeneratorException(
           "yaml found at $yamlStringsPath is not a YamlMap");

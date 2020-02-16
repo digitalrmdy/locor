@@ -1,11 +1,10 @@
 name: localization_builder
 description: Build localizations class form a YAML file
-version: 0.0.1
+version: 0.0.2
 author:
-homepage:
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   localization_annotation:

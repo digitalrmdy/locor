@@ -10,6 +10,23 @@ class GenerateAppLocalizationsConfig {
 
   ///list of locals that are supported, e.g ['en', 'nl']
   final List<String> supportedLocals;
+
+  final SeparatorStyle separatorStyle;
+
   const GenerateAppLocalizationsConfig(
-      {this.name, this.yamlStringsPath, this.supportedLocals});
+      {this.name,
+      this.yamlStringsPath,
+      this.supportedLocals,
+      this.separatorStyle = SeparatorStyle.CamelCase});
+}
+
+//How the yaml keys should be joined together into getters
+enum SeparatorStyle {
+  ///method name for keys common.appName:
+  ///common_appName
+  Underscore,
+
+  ///method name for keys common.appName:
+  ///commonAppName
+  CamelCase
 }

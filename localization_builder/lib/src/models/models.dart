@@ -1,5 +1,4 @@
-
-
+import 'package:localization_annotation/localization_annotation.dart';
 
 import '../util/string_utils.dart';
 
@@ -47,7 +46,15 @@ class StringValue extends StringNode {
   final String value;
   final List<StringValueArg> args;
 
-  String get camelCaseFieldName => toCamelCase(_lookupFullKeys(this));
+  String generateMethodName(SeparatorStyle separatorStyle) {
+    switch (separatorStyle) {
+      case SeparatorStyle.Underscore:
+        return _lookupFullKeys(this).join("_");
+      case SeparatorStyle.CamelCase:
+        return toCamelCase(_lookupFullKeys(this));
+    }
+    throw UnimplementedError();
+  }
 
   @override
   String get key => parent.key;
