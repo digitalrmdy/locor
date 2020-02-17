@@ -11,7 +11,7 @@ class AppLocalizationsDartBuilder {
       List<String> supportedLocals, SeparatorStyle separatorStyle) {
     final lib = Library((b) => b.body.addAll([
           _AppLocalizationsBuilder(name).build(strings, separatorStyle),
-          _AppLocalizationsDelegateBuilder(name).build(supportedLocals)
+          _AppLocalizationsDelegateBuilder(name).build(supportedLocals),
         ]));
     final emitter = DartEmitter();
     return DartFormatter().format('${lib.accept(emitter)}');
@@ -74,8 +74,16 @@ class _AppLocalizationsBuilder {
 
   _AppLocalizationsBuilder(this.name);
 
+  String createIgnoreForFileLowerCamelCaseUnderscoreWarning() {
+    return "// ignore_for_file: non_constant_identifier_names";
+  }
+
   Class build(StringsContainer strings, SeparatorStyle separatorStyle) {
     return Class((b) => b
+      ..docs.addAll([
+        if (separatorStyle == SeparatorStyle.Underscore)
+          createIgnoreForFileLowerCamelCaseUnderscoreWarning()
+      ])
       ..name = name
       ..methods.add(_createLoadMethod())
       ..methods.add(__createOfMethod())

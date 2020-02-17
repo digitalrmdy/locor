@@ -6,6 +6,7 @@ part of 'app_localizations.dart';
 // AppLocalizationsGenerator
 // **************************************************************************
 
+// ignore_for_file: non_constant_identifier_names
 class AppLocalizations {
   static Future<AppLocalizations> load(Locale locale) {
     final String name = locale.countryCode == null || locale.countryCode.isEmpty
@@ -25,17 +26,18 @@ class AppLocalizations {
   String get appTitle => Intl.message('Sample', name: 'appTitle');
   String welcome(firstName) =>
       Intl.message('Welcome, $firstName', name: 'welcome', args: [firstName]);
-  String get loginButtonLogin =>
-      Intl.message('Login', name: 'loginButtonLogin');
-  String get loginButtonContinueWithoutRegister =>
+  String get login_button_login =>
+      Intl.message('Login', name: 'login_button_login');
+  String get login_button_continueWithoutRegister =>
       Intl.message('Continue without registering',
-          name: 'loginButtonContinueWithoutRegister');
-  String get registerButton => Intl.message('Register', name: 'registerButton');
-  String get registerErrorDialogMsg => Intl.message(
+          name: 'login_button_continueWithoutRegister');
+  String get register_button =>
+      Intl.message('Register', name: 'register_button');
+  String get register_error_dialog_msg => Intl.message(
       'An error occured during the register call.\nPlease try again.',
-      name: 'registerErrorDialogMsg');
-  String get registerErrorDialogTitle =>
-      Intl.message('Register Error!', name: 'registerErrorDialogTitle');
+      name: 'register_error_dialog_msg');
+  String get register_error_dialog_title =>
+      Intl.message('Register Error!', name: 'register_error_dialog_title');
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
