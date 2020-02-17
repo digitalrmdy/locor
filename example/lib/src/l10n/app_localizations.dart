@@ -7,5 +7,6 @@ part 'app_localizations.g.dart';
 @GenerateAppLocalizationsConfig(
     name: 'AppLocalizations',
     yamlStringsPath: 'lib/src/l10n/strings.yaml',
-    supportedLocals: ['en', 'nl'])
+    supportedLocals: ['en', 'nl'],
+    separatorStyle: SeparatorStyle.CamelCase)
 class AppLocalizationsConfig {}

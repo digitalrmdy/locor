@@ -9,7 +9,7 @@ void main() {
     final resource = readResource("strings.yaml");
     final yaml = loadYaml(resource);
     final strings = StringsBuilder().buildFromYaml(yaml);
+    print(strings);
     //TODO proper testing
   });
 }
-

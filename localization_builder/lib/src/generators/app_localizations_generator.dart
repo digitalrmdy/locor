@@ -49,7 +49,8 @@ class AppLocalizationsGenerator
             .map((x) => x.toStringValue())
             .toList();
     final SeparatorStyle separatorStyle =
-        readParam(annotation, 'separatorStyle').literalValue;
+        readParam(annotation, 'separatorStyle')
+            .enumValue(SeparatorStyle.values);
     final String name = readParam(annotation, 'name').stringValue;
     final yamlMap = await _toYamlMap(yamlStringsPath, buildStep);
     if (yamlMap is YamlMap) {
@@ -60,5 +61,14 @@ class AppLocalizationsGenerator
       throw AppLocalizationsGeneratorException(
           "yaml found at $yamlStringsPath is not a YamlMap");
     }
+  }
+}
+
+extension on ConstantReader {
+  T enumValue<T>(Iterable<T> selectFrom) {
+    return selectFrom.firstWhere(
+      (enumType) =>
+          this.objectValue.getField(enumType.toString().split('.')[1]) != null,
+    );
   }
 }
