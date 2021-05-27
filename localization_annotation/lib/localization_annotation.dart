@@ -14,9 +14,9 @@ class GenerateAppLocalizationsConfig {
   final SeparatorStyle separatorStyle;
 
   const GenerateAppLocalizationsConfig(
-      {this.name,
-      this.yamlStringsPath,
-      this.supportedLocals,
+      {required this.name,
+      required this.yamlStringsPath,
+      required this.supportedLocals,
       this.separatorStyle = SeparatorStyle.CamelCase});
 }
 
