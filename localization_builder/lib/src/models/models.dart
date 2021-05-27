@@ -3,8 +3,8 @@ import 'package:localization_annotation/localization_annotation.dart';
 import '../util/string_utils.dart';
 
 abstract class StringNode {
-  String get key;
-  StringNode get parent;
+  String? get key;
+  StringNode? get parent;
 }
 
 class Strings extends StringsContainer {
@@ -18,9 +18,9 @@ class Strings extends StringsContainer {
 
 class StringsContainer implements StringNode {
   @override
-  final StringsContainer parent;
+  final StringsContainer? parent;
   @override
-  final String key;
+  final String? key;
   final List<StringNode> children = [];
 
   void addStringParent(StringsContainer parent) {
@@ -53,17 +53,16 @@ class StringValue extends StringNode {
       case SeparatorStyle.CamelCase:
         return toCamelCase(_lookupFullKeys(this));
     }
-    throw UnimplementedError();
   }
 
   @override
-  String get key => parent.key;
+  String? get key => parent.key;
 
   StringValue(this.parent, this.value, this.args);
 
   @override
   String toString() {
-    final parentName = parent is Strings ? "root" : parent?.key;
+    final parentName = parent is Strings ? "root" : parent.key;
     return '$StringValue{parent: $parentName, value: "$value", args: $args}';
   }
 }
@@ -80,11 +79,11 @@ class StringValueArg {
 }
 
 List<String> _lookupFullKeys(StringValue child) {
-  StringNode p = child.parent;
+  StringNode? p = child.parent;
   List<String> keys = [];
 
   while (p?.key != null) {
-    keys.insert(0, p.key);
+    keys.insert(0, p!.key!);
     p = p.parent;
   }
   return keys;
