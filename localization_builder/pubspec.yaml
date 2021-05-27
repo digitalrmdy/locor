@@ -11,6 +11,7 @@ dependencies:
     git:
       url: https://github.com/digitalrmdy/localization-builder.git
       path: localization_annotation
+      ref: null-safety
   source_gen: ^1.0.1
   build: ^2.0.1
   yaml: ^3.1.0
