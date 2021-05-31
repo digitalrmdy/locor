@@ -29,7 +29,7 @@ class AppLocalizationsGenerator extends GeneratorForAnnotation<GenerateAppLocali
   ConstantReader readParam(ConstantReader annotation, String parameter) {
     final reader = annotation.read(parameter);
     if (reader.isNull) {
-      throw AppLocalizationsGeneratorException('$parameter is requried');
+      throw AppLocalizationsGeneratorException('$parameter is required');
     }
     return reader;
   }

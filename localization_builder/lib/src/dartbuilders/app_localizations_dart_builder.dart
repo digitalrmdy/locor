@@ -98,7 +98,7 @@ class _AppLocalizationsBuilder {
         ..name = "locale"
         ..type = refer(("Locale"))))
       ..body = Code('''
-            final String name = locale.countryCode == null || locale.countryCode.isEmpty
+            final String name = locale.countryCode == null || locale.countryCode!.isEmpty
     ? locale.languageCode : locale.toString();
     String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
@@ -115,7 +115,7 @@ class _AppLocalizationsBuilder {
       ..requiredParameters.add(Parameter((p) => p
         ..name = "context"
         ..type = refer("BuildContext")))
-      ..returns = refer(name)
+      ..returns = refer("$name?")
       ..body = Code('return Localizations.of<$name>(context, $name);'));
   }
 }
