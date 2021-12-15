@@ -1,6 +1,6 @@
 name: localization_annotation
 description: annotations for the localization builder
-version: 0.1.2
+version: 0.1.3
 author:
 
 environment:
