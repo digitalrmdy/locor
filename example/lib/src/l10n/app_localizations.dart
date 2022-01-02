@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:localization_annotation/localization_annotation.dart';
+import 'package:localization_builder/annotations.dart';
 import 'messages_all.dart';
 part 'app_localizations.g.dart';
 

@@ -8,10 +8,6 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  localization_annotation:
-    git:
-      url: https://github.com/digitalrmdy/localization-builder.git
-      path: localization_annotation
   flutter:
     sdk: flutter
 
@@ -30,8 +26,6 @@ dev_dependencies:
 dependency_overrides:
   localization_builder:
     path: ../localization_builder
-  localization_annotation:
-    path: ../localization_annotation
 
 
 # For information on the generic Dart part of this file, see the

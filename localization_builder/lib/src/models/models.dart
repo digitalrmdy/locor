@@ -1,5 +1,4 @@
-import 'package:localization_annotation/localization_annotation.dart';
-
+import '../../annotations.dart';
 import '../util/string_utils.dart';
 
 abstract class StringNode {

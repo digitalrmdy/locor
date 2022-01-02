@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:localization_annotation/localization_annotation.dart';
+import 'package:localization_builder/annotations.dart';
 import 'package:localization_builder/src/dartbuilders/app_localizations_dart_builder.dart';
 import 'package:localization_builder/src/stringsmetadatabuilder/strings_builder.dart';
 
