@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:localization_builder/annotations.dart';
-import 'package:localization_builder/src/models/models.dart';
-import 'package:localization_builder/src/stringsmetadatabuilder/strings_builder.dart';
+import 'package:locor/annotations.dart';
+import 'package:locor/src/models/models.dart';
+import 'package:locor/src/stringsmetadatabuilder/strings_builder.dart';
 import 'package:yaml/yaml.dart';
 
 void main() {

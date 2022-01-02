@@ -1,6 +1,6 @@
-name: localization_builder
+name: locor
 description: Build localizations class form a YAML file
-version: 0.2.0
+version: 0.4.0
 author:
 
 environment:

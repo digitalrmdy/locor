@@ -1,5 +1,3 @@
-library localization_annotation;
-
 ///generate an AppLocalizations class with [name] based on yaml found at [yamlStringsPath] for [supportedLocals]
 class GenerateAppLocalizationsConfig {
   ///name of the class, e.g 'AppLocalizations'

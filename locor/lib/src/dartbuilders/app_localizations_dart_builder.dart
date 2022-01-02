@@ -1,6 +1,6 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
-import 'package:localization_builder/src/util/string_utils.dart';
+import 'package:locor/src/util/string_utils.dart';
 
 import '../../annotations.dart';
 import '../models/models.dart';
