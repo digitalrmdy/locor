@@ -9,9 +9,10 @@ part of 'app_localizations.dart';
 // ignore_for_file: non_constant_identifier_names
 class AppLocalizations {
   static Future<AppLocalizations> load(Locale locale) {
-    final String name = locale.countryCode == null || locale.countryCode.isEmpty
-        ? locale.languageCode
-        : locale.toString();
+    final String name =
+        locale.countryCode == null || locale.countryCode!.isEmpty
+            ? locale.languageCode
+            : locale.toString();
     String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -19,7 +20,7 @@ class AppLocalizations {
     });
   }
 
-  static AppLocalizations of(BuildContext context) {
+  static AppLocalizations? of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
