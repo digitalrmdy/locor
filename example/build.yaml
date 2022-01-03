@@ -3,7 +3,7 @@ targets:
   $default:
     builders:
       # Configure the builder `pkg_name|builder_name`
-      localization_builder:
+      locor:
         # Only run this builder on the specified input.
         generate_for:
           - lib/src/l10n/app_localizations.dart

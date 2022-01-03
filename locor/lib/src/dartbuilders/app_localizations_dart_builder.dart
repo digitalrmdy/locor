@@ -1,14 +1,14 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
-import 'package:localization_annotation/localization_annotation.dart';
-import 'package:localization_builder/src/util/string_utils.dart';
+import 'package:locor/src/util/string_utils.dart';
 
+import '../../locor.dart';
 import '../models/models.dart';
 import '../util/generator_utils.dart';
 
 class AppLocalizationsDartBuilder {
-  String buildDartFile(
-      String name, Strings strings, List<String> supportedLocals, SeparatorStyle separatorStyle) {
+  String buildDartFile(String name, Strings strings,
+      List<String> supportedLocals, SeparatorStyle separatorStyle) {
     final lib = Library((b) => b.body.addAll([
           _AppLocalizationsBuilder(name).build(strings, separatorStyle),
           _AppLocalizationsDelegateBuilder(name).build(supportedLocals),
@@ -52,7 +52,8 @@ class _AppLocalizationsDelegateBuilder {
       ..requiredParameters.add(Parameter((p) => p
         ..name = 'locale'
         ..type = refer('Locale')))
-      ..body = Code('return [${joinSingleQuoted(supportedLocals)}].contains(locale.languageCode);')
+      ..body = Code(
+          'return [${joinSingleQuoted(supportedLocals)}].contains(locale.languageCode);')
       ..annotations.add(refer("override")));
   }
 
@@ -149,7 +150,8 @@ class _StringsBuilder {
     final name = stringValue.generateMethodName(separatorStyle);
     final args = stringValue.args;
     //escape newlines and remove trailing new lines
-    var msg = replaceNewLinesWith(removeNewLinesRight(stringValue.value), '\\n');
+    var msg =
+        replaceNewLinesWith(removeNewLinesRight(stringValue.value), '\\n');
     String body = "Intl.message('$msg', name: '$name'";
     if (args.isNotEmpty) {
       final argsString = args.map((a) => a.key).join(", ");
