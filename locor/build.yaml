@@ -9,7 +9,7 @@ builders:
   # `applies_builders` - uses the `combining_builder` from `source_gen` to
   #   combine the parts from each builder into one part file.
   locor:
-    import: "package:locor/locor.dart"
+    import: "package:locor/src/builder.dart"
     builder_factories: ["locor"]
     build_extensions: {".dart": ["locor.g.part"]}
     auto_apply: dependents
