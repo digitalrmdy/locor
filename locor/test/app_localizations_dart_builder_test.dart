@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:locor/annotations.dart';
+import 'package:locor/locor.dart';
 import 'package:locor/src/dartbuilders/app_localizations_dart_builder.dart';
 import 'package:locor/src/stringsmetadatabuilder/strings_builder.dart';
 

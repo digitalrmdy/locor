@@ -4,7 +4,7 @@ import 'package:glob/glob.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:yaml/yaml.dart';
 
-import '../../annotations.dart';
+import '../../locor.dart';
 import '../dartbuilders/app_localizations_dart_builder.dart';
 import '../exceptions/exceptions.dart';
 import '../stringsmetadatabuilder/strings_builder.dart';

@@ -1,8 +1,5 @@
 name: example
 description: locor usage example
-version: 0.0.1
-author:
-homepage:
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

@@ -1,4 +1,4 @@
-import '../../annotations.dart';
+import '../../locor.dart';
 import '../util/string_utils.dart';
 
 abstract class StringNode {

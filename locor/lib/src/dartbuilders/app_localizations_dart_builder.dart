@@ -2,7 +2,7 @@ import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
 import 'package:locor/src/util/string_utils.dart';
 
-import '../../annotations.dart';
+import '../../locor.dart';
 import '../models/models.dart';
 import '../util/generator_utils.dart';
 
