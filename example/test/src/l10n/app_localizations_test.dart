@@ -7,7 +7,6 @@ import '../../../lib/src/l10n/app_localizations.dart';
 void main() {
   test("test if translation for 'nl' locale is correct", () async {
     final local = Locale.fromSubtags(languageCode: 'nl');
-    assert(local != null);
 
     final appLocalizations = await AppLocalizations.load(local);
     expect(appLocalizations.appTitle, equals("Voorbeeld"));
@@ -15,7 +14,6 @@ void main() {
 
   test("test if translation for 'en' locale is correct", () async {
     final local = Locale.fromSubtags(languageCode: 'en');
-    assert(local != null);
 
     final appLocalizations = await AppLocalizations.load(local);
     expect(appLocalizations.appTitle, equals("Example"));
@@ -23,7 +21,6 @@ void main() {
 
   test("test translation with argument", () async {
     final local = Locale.fromSubtags(languageCode: 'nl');
-    assert(local != null);
 
     final appLocalizations = await AppLocalizations.load(local);
 

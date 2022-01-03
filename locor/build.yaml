@@ -8,10 +8,10 @@ builders:
   # `build_to: cache` - the output is not put directly into the project
   # `applies_builders` - uses the `combining_builder` from `source_gen` to
   #   combine the parts from each builder into one part file.
-  localization_builder:
-    import: "package:localization_builder/localization_builder.dart"
-    builder_factories: ["appLocalizationsBuilder"]
-    build_extensions: {".dart": ["localization_builder.g.part"]}
+  locor:
+    import: "package:locor/src/builder.dart"
+    builder_factories: ["locor"]
+    build_extensions: {".dart": ["locor.g.part"]}
     auto_apply: dependents
     build_to: cache
     applies_builders: ["source_gen|combining_builder"]

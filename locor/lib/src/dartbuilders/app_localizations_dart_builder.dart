@@ -1,8 +1,8 @@
 import 'package:code_builder/code_builder.dart';
 import 'package:dart_style/dart_style.dart';
-import 'package:localization_annotation/localization_annotation.dart';
-import 'package:localization_builder/src/util/string_utils.dart';
+import 'package:locor/src/util/string_utils.dart';
 
+import '../../locor.dart';
 import '../models/models.dart';
 import '../util/generator_utils.dart';
 
@@ -99,7 +99,7 @@ class _AppLocalizationsBuilder {
         ..name = "locale"
         ..type = refer(("Locale"))))
       ..body = Code('''
-            final String name = locale.countryCode == null || locale.countryCode.isEmpty
+            final String name = locale.countryCode == null || locale.countryCode!.isEmpty
     ? locale.languageCode : locale.toString();
     String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
@@ -116,7 +116,7 @@ class _AppLocalizationsBuilder {
       ..requiredParameters.add(Parameter((p) => p
         ..name = "context"
         ..type = refer("BuildContext")))
-      ..returns = refer(name)
+      ..returns = refer("$name?")
       ..body = Code('return Localizations.of<$name>(context, $name);'));
   }
 }
@@ -124,7 +124,7 @@ class _AppLocalizationsBuilder {
 class _StringsBuilder {
   final SeparatorStyle separatorStyle;
 
-  const _StringsBuilder(this.separatorStyle) : assert(separatorStyle != null);
+  const _StringsBuilder(this.separatorStyle);
 
   List<Method> build(StringsContainer parent) {
     return _createMethods(parent.children);
@@ -162,16 +162,13 @@ class _StringsBuilder {
   }
 
   Method _createMethod(StringValue child) {
-    return Method((b) {
-      b
-        ..name = child.generateMethodName(separatorStyle)
-        ..returns = refer("String")
-        ..lambda = true
-        ..type = child.args.isNotEmpty ? null : MethodType.getter
-        ..body = Code(createIntlCodeBody(child))
-        ..requiredParameters.addAll(_toParams(child.args));
-      return b;
-    });
+    return Method((b) => b
+      ..name = child.generateMethodName(separatorStyle)
+      ..returns = refer("String")
+      ..lambda = true
+      ..type = child.args.isNotEmpty ? null : MethodType.getter
+      ..body = Code(createIntlCodeBody(child))
+      ..requiredParameters.addAll(_toParams(child.args)));
   }
 
   Iterable<Parameter> _toParams(List<StringValueArg> args) {

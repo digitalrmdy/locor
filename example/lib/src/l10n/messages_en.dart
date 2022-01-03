@@ -33,6 +33,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerErrorDialogTitle":
             MessageLookupByLibrary.simpleMessage("Register Error!"),
         "registerErrorDialogMsg": MessageLookupByLibrary.simpleMessage(
-            'An error occured during the register call.\nPlease try again.'),
+            'An error occurred during the register call.\nPlease try again.'),
       };
 }

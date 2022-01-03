@@ -1,11 +1,10 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:glob/glob.dart';
-import 'package:localization_annotation/localization_annotation.dart';
-
 import 'package:source_gen/source_gen.dart';
 import 'package:yaml/yaml.dart';
 
+import '../../locor.dart';
 import '../dartbuilders/app_localizations_dart_builder.dart';
 import '../exceptions/exceptions.dart';
 import '../stringsmetadatabuilder/strings_builder.dart';
@@ -33,7 +32,7 @@ class AppLocalizationsGenerator
   ConstantReader readParam(ConstantReader annotation, String parameter) {
     final reader = annotation.read(parameter);
     if (reader.isNull) {
-      throw AppLocalizationsGeneratorException('$parameter is requried');
+      throw AppLocalizationsGeneratorException('$parameter is required');
     }
     return reader;
   }
@@ -44,10 +43,12 @@ class AppLocalizationsGenerator
     final yamlStringsPath =
         readParam(annotation, 'yamlStringsPath').stringValue;
     final List<String> supportedLocals =
-        readParam(annotation, 'supportedLocals')
-            .listValue
-            .map((x) => x.toStringValue())
-            .toList();
+        readParam(annotation, 'supportedLocals').listValue.map((x) {
+      final stringValue = x.toStringValue();
+      if (stringValue == null)
+        throw AppLocalizationsGeneratorException("Local not recognized");
+      return x.toStringValue() ?? "";
+    }).toList();
     final SeparatorStyle separatorStyle =
         readParam(annotation, 'separatorStyle')
             .enumValue(SeparatorStyle.values);

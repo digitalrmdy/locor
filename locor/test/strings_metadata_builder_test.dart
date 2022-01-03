@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:localization_builder/src/stringsmetadatabuilder/strings_builder.dart';
+import 'package:locor/src/stringsmetadatabuilder/strings_builder.dart';
 import 'package:yaml/yaml.dart';
 
 import 'utils/resource_reader.dart';

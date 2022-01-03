@@ -1,37 +1,28 @@
 name: example
-description: localization_builder usage example
-version: 0.0.1
-author:
-homepage:
+description: locor usage example
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  localization_annotation:
-    git:
-      url: https://github.com/digitalrmdy/localization-builder.git
-      path: localization_annotation
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  build: ^1.2.0
-  intl_translation: ^0.17.7
-  intl: ^0.16.0
-  localization_builder:
+  build: ^2.0.0
+  intl_generator: ^0.1.0
+  intl: ^0.17.0
+  locor:
     git:
       url: https://github.com/digitalrmdy/localization-builder.git
-      path: localization_builder
-  build_runner: ^1.7.1
+      path: locor
+  build_runner: ^2.0.0
   flutter_test:
     sdk: flutter
 
 dependency_overrides:
-  localization_builder:
-    path: ../localization_builder
-  localization_annotation:
-    path: ../localization_annotation
+  locor:
+    path: ../locor
 
 
 # For information on the generic Dart part of this file, see the

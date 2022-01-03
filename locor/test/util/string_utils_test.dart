@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:localization_builder/src/util/string_utils.dart';
+import 'package:locor/src/util/string_utils.dart';
 
 void main() {
 

@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:localization_annotation/localization_annotation.dart';
-import 'package:localization_builder/src/models/models.dart';
-import 'package:localization_builder/src/stringsmetadatabuilder/strings_builder.dart';
+import 'package:locor/locor.dart';
+import 'package:locor/src/models/models.dart';
+import 'package:locor/src/stringsmetadatabuilder/strings_builder.dart';
 import 'package:yaml/yaml.dart';
 
 void main() {
   group('StringValue', () {
     group('generateMethodName', () {
-      StringValue testAppMethod;
+      late StringValue testAppMethod;
       setUp(() {
         final testMap = {
           "common": {"appName": "TestApp"}
