@@ -11,5 +11,5 @@ register:
     dialog:
       title: 'Register Error!'
       msg: |
-        An error occured during the register call.
+        An error occurred during the register call.
         Please try again.

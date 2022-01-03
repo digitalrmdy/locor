@@ -7,7 +7,7 @@ import 'package:yaml/yaml.dart';
 void main() {
   group('StringValue', () {
     group('generateMethodName', () {
-      StringValue testAppMethod;
+      late StringValue testAppMethod;
       setUp(() {
         final testMap = {
           "common": {"appName": "TestApp"}
@@ -18,13 +18,11 @@ void main() {
       });
 
       test('${SeparatorStyle.CamelCase}', () {
-        expect(testAppMethod.generateMethodName(SeparatorStyle.CamelCase),
-            "commonAppName");
+        expect(testAppMethod.generateMethodName(SeparatorStyle.CamelCase), "commonAppName");
       });
 
       test('${SeparatorStyle.Underscore}', () {
-        expect(testAppMethod.generateMethodName(SeparatorStyle.Underscore),
-            "common_appName");
+        expect(testAppMethod.generateMethodName(SeparatorStyle.Underscore), "common_appName");
       });
     });
   });

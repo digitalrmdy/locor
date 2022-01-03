@@ -7,8 +7,8 @@ import '../models/models.dart';
 import '../util/generator_utils.dart';
 
 class AppLocalizationsDartBuilder {
-  String buildDartFile(String name, Strings strings,
-      List<String> supportedLocals, SeparatorStyle separatorStyle) {
+  String buildDartFile(
+      String name, Strings strings, List<String> supportedLocals, SeparatorStyle separatorStyle) {
     final lib = Library((b) => b.body.addAll([
           _AppLocalizationsBuilder(name).build(strings, separatorStyle),
           _AppLocalizationsDelegateBuilder(name).build(supportedLocals),
@@ -52,8 +52,7 @@ class _AppLocalizationsDelegateBuilder {
       ..requiredParameters.add(Parameter((p) => p
         ..name = 'locale'
         ..type = refer('Locale')))
-      ..body = Code(
-          'return [${joinSingleQuoted(supportedLocals)}].contains(locale.languageCode);')
+      ..body = Code('return [${joinSingleQuoted(supportedLocals)}].contains(locale.languageCode);')
       ..annotations.add(refer("override")));
   }
 
@@ -99,7 +98,7 @@ class _AppLocalizationsBuilder {
         ..name = "locale"
         ..type = refer(("Locale"))))
       ..body = Code('''
-            final String name = locale.countryCode == null || locale.countryCode.isEmpty
+            final String name = locale.countryCode == null || locale.countryCode!.isEmpty
     ? locale.languageCode : locale.toString();
     String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
@@ -116,7 +115,7 @@ class _AppLocalizationsBuilder {
       ..requiredParameters.add(Parameter((p) => p
         ..name = "context"
         ..type = refer("BuildContext")))
-      ..returns = refer(name)
+      ..returns = refer("$name?")
       ..body = Code('return Localizations.of<$name>(context, $name);'));
   }
 }
@@ -124,7 +123,7 @@ class _AppLocalizationsBuilder {
 class _StringsBuilder {
   final SeparatorStyle separatorStyle;
 
-  const _StringsBuilder(this.separatorStyle) : assert(separatorStyle != null);
+  const _StringsBuilder(this.separatorStyle);
 
   List<Method> build(StringsContainer parent) {
     return _createMethods(parent.children);
@@ -150,8 +149,7 @@ class _StringsBuilder {
     final name = stringValue.generateMethodName(separatorStyle);
     final args = stringValue.args;
     //escape newlines and remove trailing new lines
-    var msg =
-        replaceNewLinesWith(removeNewLinesRight(stringValue.value), '\\n');
+    var msg = replaceNewLinesWith(removeNewLinesRight(stringValue.value), '\\n');
     String body = "Intl.message('$msg', name: '$name'";
     if (args.isNotEmpty) {
       final argsString = args.map((a) => a.key).join(", ");
@@ -162,16 +160,13 @@ class _StringsBuilder {
   }
 
   Method _createMethod(StringValue child) {
-    return Method((b) {
-      b
-        ..name = child.generateMethodName(separatorStyle)
-        ..returns = refer("String")
-        ..lambda = true
-        ..type = child.args.isNotEmpty ? null : MethodType.getter
-        ..body = Code(createIntlCodeBody(child))
-        ..requiredParameters.addAll(_toParams(child.args));
-      return b;
-    });
+    return Method((b) => b
+      ..name = child.generateMethodName(separatorStyle)
+      ..returns = refer("String")
+      ..lambda = true
+      ..type = child.args.isNotEmpty ? null : MethodType.getter
+      ..body = Code(createIntlCodeBody(child))
+      ..requiredParameters.addAll(_toParams(child.args)));
   }
 
   Iterable<Parameter> _toParams(List<StringValueArg> args) {
