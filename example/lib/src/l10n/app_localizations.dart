@@ -4,9 +4,9 @@ import 'package:locor/locor.dart';
 import 'messages_all.dart';
 part 'app_localizations.g.dart';
 
-@GenerateAppLocalizationsConfig(
+@GenerateAppLocalizations(
     name: 'AppLocalizations',
     yamlStringsPath: 'lib/src/l10n/strings.yaml',
     supportedLocals: ['en', 'nl'],
     separatorStyle: SeparatorStyle.Underscore)
-class AppLocalizationsConfig {}
+void main() {}
