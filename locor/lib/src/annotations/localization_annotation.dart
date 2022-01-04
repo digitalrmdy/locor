@@ -1,5 +1,5 @@
 ///generate an AppLocalizations class with [name] based on yaml found at [yamlStringsPath] for [supportedLocals]
-class GenerateAppLocalizationsConfig {
+class GenerateAppLocalizations {
   ///name of the class, e.g 'AppLocalizations'
   final String name;
 
@@ -11,20 +11,20 @@ class GenerateAppLocalizationsConfig {
 
   final SeparatorStyle separatorStyle;
 
-  const GenerateAppLocalizationsConfig(
+  const GenerateAppLocalizations(
       {required this.name,
       required this.yamlStringsPath,
       required this.supportedLocals,
-      this.separatorStyle = SeparatorStyle.CamelCase});
+      this.separatorStyle = SeparatorStyle.Underscore});
 }
 
 //How the yaml keys should be joined together into getters
 enum SeparatorStyle {
-  ///method name for keys common.appName:
-  ///common_appName
+  ///method name for keys `common.appName`:
+  ///`common_appName`
   Underscore,
 
-  ///method name for keys common.appName:
-  ///commonAppName
+  ///method name for keys `common.appName`:
+  ///`commonAppName`
   CamelCase
 }

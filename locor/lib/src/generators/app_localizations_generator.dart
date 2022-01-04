@@ -10,7 +10,7 @@ import '../exceptions/exceptions.dart';
 import '../stringsmetadatabuilder/strings_builder.dart';
 
 class AppLocalizationsGenerator
-    extends GeneratorForAnnotation<GenerateAppLocalizationsConfig> {
+    extends GeneratorForAnnotation<GenerateAppLocalizations> {
   const AppLocalizationsGenerator();
 
   Future<YamlMap> _toYamlMap(String path, BuildStep buildStep) async {
