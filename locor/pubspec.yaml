@@ -1,6 +1,6 @@
 name: locor
 description: Build AppLocalizations class with `Intl` getters from a YAML file with placeholder support
-version: 0.4.0
+version: 0.4.1
 repository: https://github.com/digitalrmdy/locor
 
 environment:
