@@ -9,14 +9,14 @@ dependencies:
     sdk: flutter
 
 dev_dependencies:
-  build: ^2.0.0
-  intl_generator: ^0.1.0
+  build: ^2.3.0
+  intl_generator: ^0.3.0
   intl: ^0.17.0
   locor:
     git:
       url: https://github.com/digitalrmdy/localization-builder.git
       path: locor
-  build_runner: ^2.0.0
+  build_runner: ^2.2.0
   flutter_test:
     sdk: flutter
 
