@@ -10,7 +10,7 @@ dependencies:
 
 dev_dependencies:
   build: ^2.0.0
-  intl_generator: ^0.1.0
+  intl_generator: ^0.3.0
   intl: ^0.17.0
   locor:
     git:
