@@ -48,13 +48,9 @@ class AppLocalizationsGenerator extends GeneratorForAnnotation<GenerateAppLocali
         readParam(annotation, 'separatorStyle').enumValue(SeparatorStyle.values);
     final String name = readParam(annotation, 'name').stringValue;
     final yamlMap = await _toYamlMap(yamlStringsPath, buildStep);
-    if (yamlMap is YamlMap) {
-      final strings = StringsBuilder().buildFromYaml(yamlMap);
-      return AppLocalizationsDartBuilder()
-          .buildDartFile(name, strings, supportedLocals, separatorStyle);
-    } else {
-      throw AppLocalizationsGeneratorException("yaml found at $yamlStringsPath is not a YamlMap");
-    }
+    final strings = StringsBuilder().buildFromYaml(yamlMap);
+    return AppLocalizationsDartBuilder()
+        .buildDartFile(name, strings, supportedLocals, separatorStyle);
   }
 }
 
