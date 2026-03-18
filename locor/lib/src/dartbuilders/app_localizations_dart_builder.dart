@@ -14,7 +14,9 @@ class AppLocalizationsDartBuilder {
           _AppLocalizationsDelegateBuilder(name).build(supportedLocals),
         ]));
     final emitter = DartEmitter();
-    return DartFormatter().format('${lib.accept(emitter)}');
+    return DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion,
+    ).format('${lib.accept(emitter)}');
   }
 }
 
