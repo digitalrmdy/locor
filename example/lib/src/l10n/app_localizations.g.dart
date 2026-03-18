@@ -11,8 +11,8 @@ class AppLocalizations {
   static Future<AppLocalizations> load(Locale locale) {
     final String name =
         locale.countryCode == null || locale.countryCode!.isEmpty
-            ? locale.languageCode
-            : locale.toString();
+        ? locale.languageCode
+        : locale.toString();
     String localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -25,18 +25,26 @@ class AppLocalizations {
   }
 
   String get appTitle => Intl.message('Sample', name: 'appTitle');
+
   String welcome(firstName) =>
       Intl.message('Welcome, $firstName', name: 'welcome', args: [firstName]);
+
   String get login_button_login =>
       Intl.message('Login', name: 'login_button_login');
-  String get login_button_continueWithoutRegister =>
-      Intl.message('Continue without registering',
-          name: 'login_button_continueWithoutRegister');
+
+  String get login_button_continueWithoutRegister => Intl.message(
+    'Continue without registering',
+    name: 'login_button_continueWithoutRegister',
+  );
+
   String get register_button =>
       Intl.message('Register', name: 'register_button');
+
   String get register_error_dialog_msg => Intl.message(
-      'An error occured during the register call.\nPlease try again.',
-      name: 'register_error_dialog_msg');
+    'An error occured during the register call.\nPlease try again.',
+    name: 'register_error_dialog_msg',
+  );
+
   String get register_error_dialog_title =>
       Intl.message('Register Error!', name: 'register_error_dialog_title');
 }
